@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.keras
+*.h5
+*.tflite
+*.zip
+build/
+devel/
+logs/
+.DS_Store
