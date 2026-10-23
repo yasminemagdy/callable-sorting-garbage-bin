@@ -1,0 +1,49 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="map_file" default="$(env HOME)/maps/majlis_v3.yaml"/>
+  <arg name="rviz_config" default="$(env HOME)/slam.rviz"/>
+
+  <!-- Map Server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+
+  <!-- AMCL Localization -->
+  <node pkg="amcl" type="amcl" name="amcl" output="screen">
+    <remap from="scan" to="/scan_filtered"/>
+    <param name="odom_frame_id" value="odom"/>
+    <param name="base_frame_id" value="base_footprint"/>
+    <param name="global_frame_id" value="map"/>
+    <param name="min_particles" value="500"/>
+    <param name="max_particles" value="2000"/>
+    <param name="odom_model_type" value="diff"/>
+    <param name="transform_tolerance" value="1.0"/>
+    <param name="initial_pose_x" value="0.0"/>
+    <param name="initial_pose_y" value="0.0"/>
+    <param name="initial_pose_a" value="0.0"/>
+    <param name="laser_max_range" value="12.0"/>
+    <param name="laser_max_beams" value="60"/>
+    <param name="update_min_d" value="0.0"/>
+    <param name="update_min_a" value="0.0"/>
+  </node>
+
+  <!-- Move Base (Navigation) -->
+  <node pkg="move_base" type="move_base" name="move_base" output="screen">
+    <remap from="cmd_vel" to="/mobile_base/commands/velocity"/>
+    <rosparam file="$(env HOME)/kobuki_nav_config/costmap_common_params.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(env HOME)/kobuki_nav_config/costmap_common_params.yaml" command="load" ns="local_costmap"/>
+    <rosparam file="$(env HOME)/kobuki_nav_config/global_costmap_params.yaml" command="load"/>
+    <rosparam file="$(env HOME)/kobuki_nav_config/local_costmap_params.yaml" command="load"/>
+    <rosparam file="$(env HOME)/kobuki_nav_config/dwa_local_planner_params.yaml" command="load"/>
+    <param name="local_costmap/obstacle_layer/laser_scan_sensor/topic" value="/scan_filtered"/>
+    <param name="global_costmap/obstacle_layer/laser_scan_sensor/topic" value="/scan_filtered"/>
+    <param name="base_global_planner" value="navfn/NavfnROS"/>
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/>
+    <param name="controller_frequency" value="5.0"/>
+    <param name="planner_patience" value="5.0"/>
+    <param name="controller_patience" value="15.0"/>
+    <param name="conservative_reset_dist" value="3.0"/>
+    <param name="clearing_rotation_allowed" value="false"/>
+  </node>
+
+  <!-- RViz with saved slam.rviz config -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(arg rviz_config)" output="screen"/>
+</launch>

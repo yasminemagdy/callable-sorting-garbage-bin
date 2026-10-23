@@ -1,0 +1,19 @@
+# HOME target tag pose — captured 2026-05-10 with robot precisely on tape mark
+# Tag: tag36h11, ID 0, size 0.16275 m
+# Camera: Orbbec on Kobuki back mount, 33 cm above floor, lens forward
+# Intrinsics: fx=fy=600, cx=320, cy=240 (validated against 94.1 cm tape measure)
+home_tag_pose:
+  position:
+    x: 0.0295
+    y: -0.0101
+    z: 0.9422
+  orientation:
+    x: 0.9921
+    y: 0.0059
+    z: -0.1093
+    w: -0.0613
+
+tolerances:
+  position_x: 0.02
+  position_z: 0.03
+  yaw_proxy: 0.05

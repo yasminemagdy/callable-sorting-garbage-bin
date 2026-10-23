@@ -1,0 +1,99 @@
+# Majlis v3 waypoints (map built with /scan_filtered, 2026-05-08 night session)
+# Origin: HOME tape mark approximate, gmapping canvas-centered
+
+home:
+  x: -0.347
+  y: -0.119
+  qz: 0.087
+  qw: 0.996
+  yaw_deg: 9.98
+
+A:
+  x: 1.602
+  y: -0.031
+  qz: -0.677
+  qw: 0.736
+  yaw_deg: -85.26
+  # Right wall couch, front-most seat (across from O). Re-recorded clean v3 frame 2026-05-26 (replaces glitchy 5-25 read). Robot facing seated person.
+
+C:
+  x: 2.117
+  y: 0.149
+  qz: -0.755
+  qw: 0.656
+  yaw_deg: -99
+  # Commanded yaw -99° empirically lands at -69° to -90° (target -79°).
+  # Compensation: +20° due to couch geometry preventing full rotation toward user.
+  # Run-to-run yaw variance: ~10°.
+
+D:
+  x: 3.723
+  y: 0.187
+  qz: -0.695
+  qw: 0.719
+  yaw_deg: -88.13
+  # Right wall, seat after C. Recorded v3 frame 2026-05-26, then CORRECTED to presentation pose (backed off ~6cm + re-squared yaw) after move_base validation parked too close. Good leg space, faces seated person.
+
+F:
+  x: 4.842
+  y: 0.801
+  qz: -0.699
+  qw: 0.715
+  yaw_deg: -88.75
+  # Right wall, last seat before back-wall corner. Re-recorded v3 frame 2026-05-26 after AMCL drift+re-anchor (laser verified exactly on walls; earlier y=0.299 read was pre-drift, discarded). Robot facing seated person.
+
+G:
+  x: 4.840
+  y: 1.229
+  qz: 0.040
+  qw: 0.999
+  yaw_deg: 4.58
+  # Back wall, first seat after right-wall corner. Recorded v3 frame 2026-05-26 (laser verified on walls). Robot facing seated person.
+
+I:
+  x: 4.589
+  y: 2.113
+  qz: 0.021
+  qw: 1.000
+  yaw_deg: 2.40
+  # Back wall, seat after G. Recorded v3 frame 2026-05-26 after re-anchor (laser verified exactly on walls). Robot facing seated person.
+
+J:
+  x: 4.075
+  y: 2.264
+  qz: 0.777
+  qw: 0.630
+  yaw_deg: 101.9
+  # Left wall, first seat after back-left corner. Recorded v3 frame 2026-05-26 after re-anchor (laser verified exactly on walls). Robot facing seated person.
+
+L:
+  x: 3.411
+  y: 2.000
+  qz: 0.758
+  qw: 0.652
+  yaw_deg: 98.57
+  # Left wall, seat after J. Recorded v3 frame 2026-05-26 after re-anchor (laser verified exactly on walls). Robot facing seated person.
+
+M:
+  x: 1.851
+  y: 1.777
+  qz: 0.748
+  qw: 0.663
+  yaw_deg: 96.92
+  # Left wall, seat near entrance end. Recorded v3 frame 2026-05-26 after re-anchor + extra nudge to tighten (entrance area is x-feature-poor; laser verified exactly on walls). Robot facing seated person.
+
+O:
+  x: 1.210
+  y: 1.567
+  qz: 0.757
+  qw: 0.653
+  yaw_deg: 98.5
+  # Across from A (entrance end). Recorded v3 frame 2026-05-26 (RViz clean, no re-anchor needed). Robot physically at O NFC tag, facing seated person.
+
+P:
+  x: 1.007
+  y: 1.586
+  qz: 1.000
+  qw: -0.027
+  yaw_deg: -176.95
+  # Entrance seat (final). Recorded v3 frame 2026-05-26 after re-anchor (laser verified exactly on walls). Robot facing seated person (faces back into room, ~180deg).
